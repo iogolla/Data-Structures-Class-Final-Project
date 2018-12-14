@@ -1,5 +1,6 @@
 from random import randint
 from players import *
+from pathfinder import *
 
 class InvalidRequestException(Exception):
     pass
@@ -96,10 +97,13 @@ class AISquirrel(Squirrel):
             raise InvalidRequestException()
 
 class MyAISquirrel(AISquirrel):
+
     def __init__(self, coordinate, board):
         super().__init__(coordinate, board)
         self.myTicks = 0
         self.setSpeed((0,0))
+        self.exitPosition = None
+        self.healthPack = None
 
     # Get the current fuel
     def getFuel(self):
@@ -138,6 +142,9 @@ class MyAISquirrel(AISquirrel):
     # Uses 30 fuel
     def getHealthPacks(self):
         return super().getHealthPacks()
+        
+    def contains(self, lst, x):
+        return x in lst
 
     # Implement the main logic for your AI here. You may not
     # manipulate the other tiles on the board directly: this will be
@@ -149,48 +156,47 @@ class MyAISquirrel(AISquirrel):
     # may not change).
     def clockTick(self,fps,num):
         super().clockTick(fps,num)
-
-        # For example, if I wanted to step to the health pack (default tile)
-        if (self.myTicks < 1):
-            self.move(1,1)
-
-        self.myTicks += 1
-
-        if (self.myTicks % 4 != 0):
-            return
-
-        print("Fuel is")
-        print(self.getFuel())
-
-        print("The stones are here!")
-        for stone in self.getStones():
-            print(stone)
-
-        if (self.myTicks % 20 == 0):
-            self.fireStone(-1,-1)
-
-        if (self.myTicks % 40 == 0):
-            print('getting the position of all ferrets')
-            for ferretPos in self.getFerrets():
-                print(ferretPos)
-
-        if (self.myTicks % 80 == 0):
-            print('getting the position of all health packs')
-            for healthPack in self.getHealthPacks():
-                print(healthPack)
-
-        if (self.myTicks % 160 == 0):
-            print('getting the position of the exit tile')
-            print(self.getExit())
-
-        x = randint(-1, 1)
-        y = randint(-1, 1)
-        print("I am doing something boring..")
-        print(x,y)
-        if (self.canMove(x,y)):
-            print("Moving..")
-            self.move(x,y)
-        else:
-            print("Not moving..")
-
-        return
+        pf = PathFinder(self.board, self)
+        
+        if self.myTicks < 1:
+            # assign the getHealthPacks method to the healthPack attribute 
+            if self.healthPack == None:
+                self.healthPack = self.getHealthPacks()[0] 
+            print("My health pack is here:", self.healthPack)
+            #find the path to the healthPack
+            healthpath = (pf.findPath(self.healthPack))
+            #print the path
+            print (healthpath)
+            #if the path to the healthPath is valid move to the healthPack
+            if healthpath != False:
+                self.move(healthpath[1][0],healthpath[2][1])
+        #update the number of ticks
+        self.myTicks += 1 
+        
+        
+                
+        if self.getFuel() > 60:   
+            #Just want to see the level of the fuel     
+            print ("My fuel is", self.getFuel())
+            #assign the getExit method to the exitPosition attribute to prevent it from
+            #deducting 30 fuel every time the fuel is > 60
+            if self.exitPosition == None: 
+                self.exitPosition = self.getExit()
+            print("My exit position is", self.exitPosition)
+            #find the path to the exit 
+            path = (pf.findPath(self.exitPosition))
+            print("My path is:", path)
+            #if the path to the exit is valid move toward the exit
+            if path != False:
+                #if the squirrel changes direction and starts moving up,
+                #make it to start firing stones up and diagonally toward the northwest
+                #direction
+                if path[1][0] == 0 and path[1][1] == -1:
+                    self.fireStone(0,-1)
+                    self.fireStone(1,-1)
+                #move toward the exit
+                self.move(path[1][0],path[1][1])
+                    
+        
+        #if self.getFuel() > 70:
+         #   print ("My fuel is", self.getFuel())

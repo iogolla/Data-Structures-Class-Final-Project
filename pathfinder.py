@@ -96,6 +96,7 @@ class PathFinder:
                 last = chunk
                 ret.append(n)
         return ret
+        
 
     def solve(self,toCoordinate):
         self.to = toCoordinate
