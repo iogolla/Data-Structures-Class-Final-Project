@@ -15,10 +15,10 @@ move from the starting cordinate all the way to the health pack.
 
 The methods I need to implement for this part are:
 
-- (2) `getFuel(self)`, which reports the level of the fuel left
+- (1) `getFuel(self)`, which reports the level of the fuel left
 - (2) `move(self,x,y)`,  which accepts x and y in the range [-1,1] and 
 moves to that tile using |x| + |y| fuel
-- (2) `getHealthPacks(self)`, which gets the position of the healthpacks 
+- (3) `getHealthPacks(self)`, which gets the position of the healthpacks 
 on the board 
 
 In addition to these methods, I will add a field called `self.healthPack` 
@@ -44,10 +44,10 @@ in attempt to kill the ferrets.
 
 The methods I need to implement for this part are:
 
-- (2) `getExit(self)`, which reports the position of the exit tile
+- (1) `getExit(self)`, which reports the position of the exit tile
 - (2) `move(self,x,y),  which accepts x and y in the range [-1,1] and 
 moves to that tile using |x| + |y| fuel
-- (2) `fireStone(self,x,y`, which fires a stone with a set speed along
+- (3) `fireStone(self,x,y`, which fires a stone with a set speed along
 the vector (x * speed, y * speed). You don't have any control over speed, 
 but x and y must be in the range [-1,1]
 
