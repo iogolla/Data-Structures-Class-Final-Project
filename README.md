@@ -1,3 +1,6 @@
+[Link to the project specs](https://github.com/kmicinski/cs107-p8/blob/master/README.md)
+
+
 # CS 107 Project 8 -- -- AI Adventure
 
 
@@ -54,6 +57,5 @@ but x and y must be in the range [-1,1]
 In addition to these methods, I will add a field called `self.exitPosition` 
 to `MyAISquirrel` and set it to **None** then I will assign 
 `getExit(self)` method to it so as to avoid losing 30 fuel each clocktick
-
 
 
