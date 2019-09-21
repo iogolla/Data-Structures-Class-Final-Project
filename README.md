@@ -58,4 +58,7 @@ In addition to these methods, I will add a field called `self.exitPosition`
 to `MyAISquirrel` and set it to **None** then I will assign 
 `getExit(self)` method to it so as to avoid losing 30 fuel each clocktick
 
+Questions?🤔 Comments?🤨 Suggestions!😊
+
+Contact me at ianelvis6@gmail.com
 
