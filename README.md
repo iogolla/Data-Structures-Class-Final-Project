@@ -73,7 +73,7 @@ command:
     python3 game.py
 
 You should then see the empty game board set up, allowing you to play
-the game." - ![Professor Kris Micisnki](http://kmicinski.com/)
+the game." - [Professor Kris Micinski](http://kmicinski.com/)
 
 
 ## Part 1: Getting to the Health Pack
