@@ -1,7 +1,4 @@
-[Link to the project specs](https://github.com/kmicinski/cs107-p8/blob/master/README.md)
-
-
-# CS 107 Project 8 -- -- HaverQuest AI Adventure
+# HaverQuest AI Adventure
 
 
 In this project I'll be designing an AI implementation that solves a
