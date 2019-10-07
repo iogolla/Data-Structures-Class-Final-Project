@@ -1,12 +1,83 @@
 [Link to the project specs](https://github.com/kmicinski/cs107-p8/blob/master/README.md)
 
 
-# CS 107 Project 8 -- -- AI Adventure
+# CS 107 Project 8 -- -- HaverQuest AI Adventure
 
 
-In this project I'll be designing an AI implementation that solves a 
+In this project I'll be designing an AI implementation that solves a
 tile-based squirrel game. To present a clear process of my implementation,
 I will divide my explanation into two parts. 
+
+![HaverQuest Gameplay](./gameplay.png)
+
+"HaverQuest is a tile-based game, meaning that the game board is
+represented as a grid composed of tiles. An individual tile can be
+something like a piece of grass, a piece of a wall, etc... A map is a
+big matrix of tiles with various properties: grass, walls, and so
+on. HaverQuest allows maps to be loaded in a format specified by its
+game engine. For example, the above map is represented as a file like
+this:
+
+```
+# HaverQuest Map Level 1
+# G -- Grass
+# B -- Grey brick
+# R -- Red brick
+GGGGGGGGGGGGGGGGGGGG
+GGGGGGGGGGGGGGGGGGGG
+GGGGGGGGGGGGGGGGGGGG
+GGGGGGGGGGRRRRRRRGGG
+GGGGGGGGGGGGGGGGGGGG
+GGGGGGGGGGGGGGGGGGGG
+GGGGGGGGGGGGGGGGGGGG
+GGGGGGGGGGGGGGGGGGGG
+GGGGGGGGGGGGGGGGGGGG
+GGGGGGGGGGGGGGGGGGGG
+GGGGGGGGGGGGGGGGGGGG
+GGGGGGGGGGGGGGGGGGGG
+BBBBBGGGGGGGGGGGGGGG
+GGGGGGGGGGGGGGGGGGGG
+GGGGGGGGGGGGGGGGGGGG
+GGGRGGGGGGGGGGGGGGGG
+GGGRGGGGGGGGGGGGGGGG
+GGGRGGGGGGGGGGGGGGGG
+GGGRGGGGGGGGGGGGGGGG
+GGGRGGGGGGGGGGGGGGGG
+```
+
+The lines that start with `#` are comments, and are ignored by
+HaverQuest's engine as it loads the map. The map is comprised of an
+n-by-k matrix of characters, where each character stands in for the
+name of an image. This configuration is also possible to change in a
+file named `config.json`, which specifies the properties of various
+tiles.
+
+On top of the map sits various other tiles. For example, there's a
+squirrel (the game's main character that you can move with the up,
+down, left, and right keys) along with a nut. The goal of the game is
+to get to the nut before running out of "fuel." You lose one fuel each
+time you make a move (either up, down, left, or right).
+
+
+### Setting up HaverQuest
+
+To run HaverQuest, you'll need to have the `pygame` module
+installed. To do this, please run the following command on your
+computer (reach out to me if this doesn't work):
+
+    pip3 install pygame
+
+HaverQuest uses `pygame` to perform the work of rendering graphics to
+the screen.
+
+You should then be able to run HaverQuest by using the following
+command:
+
+    python3 game.py
+
+You should then see the empty game board set up, allowing you to play
+the game."
+
 
 ## Part 1: Getting to the Health Pack
 
