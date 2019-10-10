@@ -16,7 +16,7 @@ class AISquirrel(Squirrel):
         self.aiTicks = 0
         self.STONESPEED = 8
 
-    # Turn *off* the ability to set a speed
+    # Turn *off* the ability to set a speed.
     def setSpeed(self,speed):
         return
 
