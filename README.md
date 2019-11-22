@@ -1,10 +1,5 @@
 # HaverQuest AI Adventure
 
-
-In this project I'll be designing an AI implementation that solves a
-tile-based squirrel game. To present a clear process of my implementation,
-I will divide my explanation into two parts. 
-
 ![HaverQuest Gameplay](./gameplay.png)
 
 "HaverQuest is a tile-based game, meaning that the game board is
@@ -75,6 +70,9 @@ command:
 You should then see the empty game board set up, allowing you to play
 the game." - [Professor Kris Micinski](https://github.com/kmicinski/cs107-p6)
 
+In this project I'll be designing an AI implementation that solves a
+tile-based squirrel game. To present a clear process of my implementation,
+I will divide my explanation into two parts. 
 
 ## Part 1: Getting to the Health Pack
 
